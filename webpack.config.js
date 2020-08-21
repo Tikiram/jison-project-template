@@ -44,6 +44,9 @@ const jisonConfig = Object.assign({}, config, {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'calcParser.js',
+    library: 'calc',
+    libraryTarget: 'umd',
+    globalObject: 'this'
   },
 });
 var nodesConfig = Object.assign({}, config,{
