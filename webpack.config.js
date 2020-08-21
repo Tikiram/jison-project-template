@@ -1,22 +1,11 @@
 const path = require('path');
 
-module.exports = {
+const config = {
   mode: 'development',
   node: {
     fs: "empty",
   },
 
-  entry: {
-    engine: './src/index.ts',
-    parser: './src/calc.jison'
-  },
-  output: {
-    filename: '[name].js',
-    // path: __dirname + '/dist'
-    path: path.resolve(__dirname, 'dist'),
-  },
-  
-  devtool: 'inline-source-map',
   module: {
   	rules: [
   		{
@@ -42,3 +31,30 @@ module.exports = {
   	extensions: ['.tsx', '.ts', '.js', '.jison'],
   },
 };
+
+
+
+const jisonConfig = Object.assign({}, config, {
+  name: "jison-config",
+  entry: "./src/calc.jison",
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'calcParser.js',
+  },
+});
+var nodesConfig = Object.assign({}, config,{
+  name: "nodes-config",
+  entry: './src/index.ts',
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'nodes.js',
+    library: 'ast',
+    libraryTarget: 'umd',
+    globalObject: 'this'
+  },
+});
+
+// Return Array of Configurations
+module.exports = [
+  jisonConfig, nodesConfig,
+];
