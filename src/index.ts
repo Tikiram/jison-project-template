@@ -21,12 +21,13 @@ const user: User = new UserAccount("Murphy", 1);
 console.log(user);
 console.log(v1);
 console.log(6);
-console.log("otro mensaje ");
+console.log("otro mensaje ptm");
 
 export const nodos = {
   uno: 1,
   dos: "algo"
 };
 
-// global.nodos = nodos;
-// global.
+
+// @ts-ignore
+if(module && module.hot) module.hot.accept()

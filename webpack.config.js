@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 
 const config = {
   mode: 'development',
@@ -23,6 +24,9 @@ const config = {
       }
   	],
   },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+  ],
   devtool: 'inline-source-map',
   devServer: {
     contentBase: './dist',
